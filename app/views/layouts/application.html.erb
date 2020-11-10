@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %><!--ヘッダーの部分テンプレート-->
+    <div class="container">
+      <div class="col-xs-1"></div><!--左の余白生成用タグ-->
+      <%= yield %>
+      <div class="col-xs-1"></div><!--右の余白生成用タグ-->
+    </div>
   </body>
 </html>

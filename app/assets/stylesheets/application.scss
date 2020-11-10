@@ -15,3 +15,25 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// header .navbar-left {
+// 	position: relative；
+// }
+
+// header .navbar-left p {
+// 	display:inline-block;
+// 	position:absolute;
+// 	top: 50%;
+//   transform: translate(0, -50%)
+// }
+
+.title {
+  margin:0 auto;
+  font-size:34px;
+}
+
+// .container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
