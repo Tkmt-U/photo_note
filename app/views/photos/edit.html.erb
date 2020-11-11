@@ -1,2 +1,54 @@
-<h1>Photos#edit</h1>
-<p>Find me in app/views/photos/edit.html.erb</p>
+<div class="col-xs-1"></div><!--左の余白生成用タグ-->
+<%= form_with model:@photo, local: true do |f| %>
+  <div class="col-xs-7 col-xs-offset-2">
+    <!-- 以下エラーメッセージ表示-->
+    <% if @photo.errors.any? %>
+      <p><%= @photo.errors.count %>件のエラーが発生しました。</p>
+      <ul>
+        <% @photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <!-- エラーメッセージ表示ここまで-->
+
+    <h2>投稿編集</h2>
+    <%= attachment_image_tag @photo, :image, :fill, 640, 455 %>
+    <%= f.attachment_field :image %>
+    <table class="table">
+      <tr>
+        <td>タイトル</td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td>機材名</td>
+        <td><%= f.text_field :camera %></td>
+      </tr>
+      <tr>
+        <td>レンズ名</td>
+        <td><%= f.text_field :lens %></td>
+      </tr>
+      <tr>
+        <td>シャッタースピード</td>
+        <td><%= f.text_field :shutter_speed %></td>
+      </tr>
+      <tr>
+        <td>F値</td>
+        <td><%= f.text_field :f_value %></td>
+      </tr>
+      <tr>
+        <td>ISO感度</td>
+        <td><%= f.text_field :iso %></td>
+      </tr>
+      <tr>
+        <td>使用アイテム<br>(減光フィルターや三脚など)</td>
+        <td><%= f.text_field :item %></td>
+      </tr>
+      <tr>
+        <td>コメント</td>
+        <td><%= f.text_area :comment %></td>
+      </tr>
+    </table>
+    <%= f.submit "保存する" %>
+  </div>
+<% end %>

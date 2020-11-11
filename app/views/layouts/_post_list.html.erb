@@ -1,0 +1,21 @@
+<% photos.each do |photo| %>
+  <%= link_to photo_path(photo.id) do %>
+    <%= attachment_image_tag photo, :image, :fill, 640, 455 %>
+  <% end %>
+  <table class="table">
+    <tr>
+      <td>
+        <%= link_to user_path(photo.user_id) do %>
+          <%= photo.user.name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to photo_path(photo.id) do %>
+          <%= photo.title %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

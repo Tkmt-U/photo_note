@@ -4,7 +4,7 @@ class Photo < ApplicationRecord
 
   attachment :image
 
-  # validates :image, presence: true
+  validates :image, presence: true
   validates :title, presence: true
   validates :camera, presence: true
 end

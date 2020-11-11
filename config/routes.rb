@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :edit, :update]
   get 'users/mypage'
+  resources :users, only: [:show, :edit, :update]
 
   get 'homes/about'
 

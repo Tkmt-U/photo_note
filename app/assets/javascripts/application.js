@@ -16,3 +16,12 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+  $(".to-top a").on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 900);
+  event.preventDefault();
+  });
+});
