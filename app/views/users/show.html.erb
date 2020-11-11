@@ -1,9 +1,15 @@
-<div class="col-xs-1"></div><!--左の余白生成用タグ-->
-<div class="col-xs-3">
+<div class="col-xs-2">
   <%= attachment_image_tag @user, :profile_image, :fill, 200, 200 %>
-  <%= @user.name %>
-  <%= @user.introduction %>
+  <table class="table">
+    <tr>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </table>
 </div>
+<div class="col-xs-1"></div>
 <div class="col-xs-7">
   <%= render 'layouts/post_list', photos: @photos %><!--投稿一覧の部分テンプレート-->
 </div>

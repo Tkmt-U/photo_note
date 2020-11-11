@@ -1,4 +1,10 @@
 <div class="col-xs-7 col-xs-offset-2">
+  <!-- 以下フラッシュメッセージ-->
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+  <!-- フラッシュメッセージここまで-->
+
   <%= render 'layouts/post_list', photos: @photos %><!--投稿一覧の部分テンプレート-->
 </div>
 
