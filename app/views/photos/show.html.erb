@@ -46,12 +46,14 @@
     </tr>
   </table>
 
+  <%= render 'favorites/favorite', photo: @photo %><!--お気に入り機能の部分テンプレート-->
+
   <% if @photo.user == current_user %>
     <div class="col-xs-2 col-xs-offset-2">
       <%= link_to "編集する", edit_photo_path(@photo.id), class: 'btn btn-primary' %>
     </div>
     <div class="col-xs-2 col-xs-offset-4">
-      <%= link_to "削除する", photo_path(@photo.id), method: :delete, date: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-default' %>
+      <%= link_to "削除する", photo_path(@photo.id), method: :delete, class: 'btn btn-default', "data-confirm" => "本当に削除してよろしいですか？" %>
     </div>
   <% end %>
 </div>

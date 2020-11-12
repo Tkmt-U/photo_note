@@ -1,0 +1,12 @@
+<div class='favorites_buttons_<%= photo.id %>'>
+  <% if photo.favorited?(current_user) %>
+    <%= link_to photo_favorites_path(photo.id), method: :delete, remote: true do %>
+      <span class="glyphicon glyphicon-star" style="font-size: 30px" aria-hidden="true"></span>
+    <% end %>
+  <% else %>
+    <%= link_to photo_favorites_path(photo.id), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-ok" style="font-size: 30px" aria-hidden="true"></span>
+    <% end %>
+  <% end %>
+  <%= photo.favorites.count %>件のいいね
+</div>
