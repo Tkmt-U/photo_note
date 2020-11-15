@@ -1,3 +1,5 @@
+<% require 'exifr/jpeg' %>
+
 <div class="col-xs-1"></div><!--左の余白生成用タグ-->
 <h1>新規投稿</h1>
 <%= form_with model:@photo, local: true do |f| %>
@@ -14,6 +16,7 @@
 
   <%= f.attachment_field :image %>
   <table class="table">
+    <!--@exif = EXIFR::JPEG.new('app/assets/images/IMG_5297.JPG')-->
     <tr>
       <td>タイトル</td>
       <td><%= f.text_field :title %></td>

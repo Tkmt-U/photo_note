@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    # binding.pry
     @photo.user_id = current_user.id
     if @photo.save
       flash[:notice] = "Create successful"
