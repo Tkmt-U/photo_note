@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="col-xs-2">
+  <%= attachment_image_tag @user, :profile_image, :fill, 200, 200 %>
+  <table class="table">
+    <tr>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </table>
+</div>
+<div class="col-xs-1"></div>
+<div class="col-xs-7">
+  <%= render 'layouts/post_list', photos: @photos %><!--投稿一覧の部分テンプレート-->
+</div>
+
+<div class="to-top">
+  <a href="#">
+    <span class="glyphicon glyphicon-chevron-up" style="font-size: 40px" aria-hidden="true"></span>
+  </a>
+</div>

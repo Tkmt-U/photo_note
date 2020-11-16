@@ -1,2 +1,52 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
+<div class="col-xs-1"></div><!--左の余白生成用タグ-->
+<div class="col-xs-5 col-xs-offset-3">
+  <h2>マイページ</h2>
+
+  <!-- 以下フラッシュメッセージ表示-->
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+  <!-- フラッシュメッセージここまで-->
+
+  <%= attachment_image_tag @user, :profile_image, :fill, 200, 200 %>
+  <table class="table">
+    <tr>
+      <td>名前</td>
+      <td>
+        <%= @user.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>自己紹介</td>
+      <td><%= @user.introduction %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>投稿数</td>
+      <td>
+        <%= link_to user_path(@user.id) do %>
+          <%= @user.photos.count %>件
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>お気に入りされた数</td>
+      <td>
+        <%= @favorite_sum %>件
+      </td>
+    </tr>
+  </table>
+
+  <div class="col-xs-2 col-xs-offset-1">
+    <%= link_to "登録情報を編集する", edit_user_path(@user.id), class: 'btn btn-primary' %>
+  </div>
+  <div class="col-xs-2 col-xs-offset-3">
+    <%= link_to "パスワードを変更する", edit_user_password_path, class: 'btn btn-success' %>
+  </div>
+</div>
+
+
+

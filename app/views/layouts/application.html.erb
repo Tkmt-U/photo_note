@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %><!--ヘッダーの部分テンプレート-->
+    <div class="container">
+      <%= yield %>
+      <div class="col-xs-1"></div><!--右の余白生成用タグ-->
+    </div>
+    <div class="footer">
+      <p class="footer-text">© 2020 Tkmt-U </p>
+    </div>
   </body>
 </html>

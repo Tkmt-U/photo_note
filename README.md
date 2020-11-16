@@ -35,3 +35,4 @@ https://docs.google.com/spreadsheets/d/1siSZNItxf1vzvpALWwWdO2gUnfbr_G8-QxMOLQ9Y
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
+- IDE ： Cloud9
