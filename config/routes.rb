@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   get '/' => 'photos#index'
+  get 'sort' => 'photos#sort'
   resources :photos, except: [:index] do
     resource :favorites, only: [:create, :destroy]
   end
