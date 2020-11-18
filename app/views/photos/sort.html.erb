@@ -5,16 +5,13 @@
   <% end %>
   <!-- フラッシュメッセージここまで-->
 
+  <h2>ソート結果</h2>
   <%= render 'layouts/post_list', photos: @photos %><!--投稿一覧の部分テンプレート-->
 </div>
 
 <div class="col-xs-3">
   <%= form_with model:@photo, url: sort_path, method: :get, local: true do |f| %>
-    <%= f.select :selection, [ ['投稿が新しい順', 'new'],
-                            ['投稿が古い順', 'old'],
-                            ['いいねが多い順', 'many_favorites'],
-                            ['いいねが少ない順', 'little_favorites'],
-                          ] %>
+    <%= f.select :selection, @select, { include_blank: '選択してください'} %>
     <%= f.submit "ソートする" %>
   <% end %>
 </div>

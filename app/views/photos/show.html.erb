@@ -6,7 +6,7 @@
   <% end %>
   <!-- フラッシュメッセージここまで-->
 
-  <%= attachment_image_tag @photo, :image, :fill, 640, 455 %>
+  <%= attachment_image_tag @photo, :image, size: '640x455' %>
   <table class="table">
     <tr>
       <td>投稿者</td>

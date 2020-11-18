@@ -1,6 +1,6 @@
 <% photos.each do |photo| %>
   <%= link_to photo_path(photo.id) do %>
-    <%= attachment_image_tag photo, :image, :fill, 640, 455 %>
+    <%= attachment_image_tag photo, :image, size: '640x455' %>
   <% end %>
   <table class="table">
     <tr>

@@ -3,11 +3,25 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
+    @select = [ ['投稿が新しい順', 'new'],
+                ['投稿が古い順', 'old'],
+                ['いいねが多い順', 'many_favorites'],
+                ['いいねが少ない順', 'little_favorites'],
+              ]
   end
 
   def sort
-    selection = params[:selection]
-    @photos = Photo.sort(selection)
+    unless params[:selection].empty?
+      selection = params[:selection]
+      @photos = Photo.sort(selection)
+      @select = [ ['投稿が新しい順', 'new'],
+                  ['投稿が古い順', 'old'],
+                  ['いいねが多い順', 'many_favorites'],
+                  ['いいねが少ない順', 'little_favorites'],
+                ]
+    else
+      redirect_to "/"
+    end
   end
 
   def new
