@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    binding.pry
     @photos = Photo.where(user_id: params[:id])
     @user = User.find(params[:id])
   end

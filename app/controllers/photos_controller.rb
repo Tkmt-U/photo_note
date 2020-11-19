@@ -1,8 +1,13 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :sort]
 
   def index
     @photos = Photo.all
+  end
+
+  def sort
+   selection = params[:selection]
+   @photos = Photo.sort(selection)
   end
 
   def new
@@ -12,6 +17,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
+    @photo.favorites_quantity = 0
     if @photo.save
       flash[:notice] = "Create successful"
       redirect_to photo_path(@photo.id)
@@ -46,6 +52,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:user_id, :image, :title, :camera, :lens, :shutter_speed, :f_value, :iso, :item, :comment)
+    params.require(:photo).permit(:user_id, :image, :title, :camera, :lens, :shutter_speed, :f_value, :iso, :item, :comment, :favorites_quantity)
   end
 end
