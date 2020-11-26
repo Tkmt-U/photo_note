@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
@@ -51,14 +52,18 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  # gem 'rubocop-airbnb'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # gem 'webdrivers', '~> 3.0'
+  gem 'database_cleaner'
+  # gem 'poltergeist', '~> 1.5.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

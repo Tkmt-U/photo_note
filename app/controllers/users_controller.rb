@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    # 以下お気に入りされた数の算出の記述
+    # 以下お気に入りされた数の算出
     photos = Photo.where(user_id: current_user.id) # そのユーザの投稿を全て検索
     @favorite_sum = 0
     photos.each do |photo|
@@ -20,9 +20,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    unless params[:id].to_i == current_user.id
-      redirect_to users_mypage_path
-    end
+    redirect_to users_mypage_path unless params[:id].to_i == current_user.id
   end
 
   def update
@@ -31,7 +29,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Update successful"
       redirect_to users_mypage_path
     else
-      render :edit
+      render action: "edit"
     end
   end
 

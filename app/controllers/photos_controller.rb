@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
-    @photo.favorites_quantity = 0
+    @photo.favorites_quantity = 0 # favorites_quantityの初期値
     if @photo.save
       flash[:notice] = "Create successful"
       redirect_to photo_path(@photo.id)
@@ -46,6 +46,7 @@ class PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+    redirect_to "/" unless @photo.user == current_user
   end
 
   def update
@@ -61,6 +62,7 @@ class PhotosController < ApplicationController
   def destroy
     photo = Photo.find(params[:id])
     photo.destroy
+    flash[:notice] = "Destroy successful"
     redirect_to "/"
   end
 

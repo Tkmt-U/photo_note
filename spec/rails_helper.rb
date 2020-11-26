@@ -30,7 +30,38 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+require 'capybara/rspec'
 RSpec.configure do |config|
+  # Capybara.register_driver :headless_chrome do |app|
+  #   chrome_options = Selenium::WebDriver::Chrome::Options.new
+  #   chrome_options.args << '--headless'
+  #   driver = Capybara::Selenium::Driver.new(app, browser: :chrome, options: chrome_options)
+  #   driver.browser.manage.window.size = Selenium::WebDriver::Dimension.new(2000, 3000)
+  #   driver
+  # end
+  # Capybara.javascript_driver = :headless_chrome
+  # Capybara.default_max_wait_time = 5
+  # Capybara.server = :puma, { Silent: true }
+  # Capybara.register_driver :selenium do |app|
+  #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  # end
+  # Capybara.register_driver :chrome do |app|
+  #   args = %w(disable-gpu mute-audio window-size=1280,800 lang=ja)
+  #   args << 'headless' unless ENV['NO_HEADLESS']
+  #   Capybara::Selenium::Driver.new(
+  #     app,
+  #     browser: :chrome,
+  #     desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+  #       chrome_options: {
+  #         args: args,
+  #         w3c: false
+  #       }
+  #     )
+  #   )
+  # end
+  # Capybara.default_driver = :chrome
+
+  config.include Rails.application.routes.url_helpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -59,6 +90,9 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
+  # arbitrary gems may also be filtered via
   # config.filter_gems_from_backtrace("gem name")
+  config.include Capybara::DSL
+  config.include FactoryGirl::Syntax::Methods
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

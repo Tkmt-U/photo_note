@@ -35,13 +35,21 @@
   color: #6c6b6b;
 }
 
+body {
+  background-color: #FAFAFA;
+}
+
+.navbar {
+  background-color: #E0E0E0;
+}
+
 .title {
   margin:0 auto;
   font-size:34px;
 }
 
 .frame {
-  min-height: 100vh;
+  min-height: 82vh;
 }
 
 .to-top {
@@ -52,11 +60,15 @@
 
 .footer {
   margin-top: 50px;
-  background-color: #EEEEEE;
+  background-color: #BDBDBD;
   text-align: right;
   bottom: 0;
 }
 
 .footer-text {
   margin-bottom: 0px;
+}
+
+.box {
+  height: 80px;
 }
