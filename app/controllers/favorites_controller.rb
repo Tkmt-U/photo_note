@@ -15,9 +15,4 @@ class FavoritesController < ApplicationController
     @photo.update(favorites_quantity: @photo.favorites_quantity - 1)
     favorite.destroy
   end
-
-  # private
-  # def photo_params
-  #   params.require(:photo).permit(:favorites_quantity)
-  # end
 end

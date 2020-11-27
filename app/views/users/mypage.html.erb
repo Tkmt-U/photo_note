@@ -8,13 +8,11 @@
   <% end %>
   <!-- フラッシュメッセージここまで-->
 
-  <%= attachment_image_tag @user, :profile_image, size: '200x200' %>
+  <%= attachment_image_tag @user, :profile_image, size: '200x200', fallback: "no_image_messeage.png" %>
   <table class="table">
     <tr>
       <td>名前</td>
-      <td>
-        <%= @user.name %>
-      </td>
+      <td><%= @user.name %></td>
     </tr>
     <tr>
       <td>自己紹介</td>

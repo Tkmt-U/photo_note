@@ -25,3 +25,10 @@ $(function() {
   event.preventDefault();
   });
 });
+
+$(function() {
+  var file_field = document.querySelector()
+  $('.image-field').change(function(){
+    var file = $()
+  })  
+})

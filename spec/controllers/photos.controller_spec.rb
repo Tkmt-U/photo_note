@@ -108,6 +108,12 @@ RSpec.describe "photos controller" do
         sleep 1 # jsの動作完了待ちのため処理を停止
         expect(current_path).to eq "/"
       end
+      it "キャンセルする" do
+        expect{
+          expect(page.dismiss_confirm).to eq "本当に削除してよろしいですか？"
+          expect(current_path).to eq photo_path(@photo)
+        }.to change{ Photo.count }.by(0)
+      end
     end
     context "他ユーザの投稿詳細の場合" do
       before do

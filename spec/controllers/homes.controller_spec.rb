@@ -37,6 +37,15 @@ RSpec.describe "homes controller" do
         expect(current_path).to eq new_user_session_path
       end
     end
+    context "トップページへのリンク確認" do
+      before do
+        visit homes_about_path # ページの遷移を確認するため"/"以外に遷移
+        click_on "photo note"
+      end
+      it "遷移に成功する" do
+        expect(current_path).to eq "/"
+      end
+    end
   end
 
   describe "ログイン後のヘッダーの表示" do
@@ -74,6 +83,15 @@ RSpec.describe "homes controller" do
     context "ログアウトの表示" do
       before do
         click_on "ログアウト"
+      end
+      it "遷移に成功する" do
+        expect(current_path).to eq "/"
+      end
+    end
+    context "トップページへのリンク確認" do
+      before do
+        visit users_mypage_path # ページの遷移を確認するため"/"以外に遷移
+        click_on "photo note"
       end
       it "遷移に成功する" do
         expect(current_path).to eq "/"

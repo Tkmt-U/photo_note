@@ -13,10 +13,10 @@ RSpec.describe "users controller" do
     before do
       click_on "ログアウト"
       visit new_user_registration_path
-      fill_in 'user[name]', with: "user1"
-      fill_in 'user[email]', with: "user1@example.com"
-      fill_in 'user[password]', with: "Password"
-      fill_in 'user[password_confirmation]', with: "Password"
+      fill_in "user[name]", with: "user1"
+      fill_in "user[email]", with: "user1@example.com"
+      fill_in "user[password]", with: "Password"
+      fill_in "user[password_confirmation]", with: "Password"
     end
     context "登録" do
       it "成功する" do
@@ -123,7 +123,7 @@ RSpec.describe "users controller" do
     end
     context "メールアドレスの変更" do
       it "成功する" do
-        fill_in "user[email]", with: "mail@mail.com"
+        fill_in "user[email]", with: "mail@example.com"
         click_on "保存する"
         expect(current_path).to eq users_mypage_path
       end
@@ -138,15 +138,96 @@ RSpec.describe "users controller" do
         # 他ユーザの登録
         click_on 'ログアウト'
         visit new_user_registration_path
-        fill_in 'user[name]', with: "user1"
-        fill_in 'user[email]', with: "user1@example.com"
-        fill_in 'user[password]', with: "Password"
-        fill_in 'user[password_confirmation]', with: "Password"
-        click_on '登録'
+        fill_in "user[name]", with: "user1"
+        fill_in "user[email]", with: "user1@example.com"
+        fill_in "user[password]", with: "Password"
+        fill_in "user[password_confirmation]", with: "Password"
+        click_on "登録"
         # 他ユーザの登録ここまで
         visit edit_user_path(@user)
       end
       it "マイページに遷移する" do
+        expect(current_path).to eq users_mypage_path
+      end
+    end
+  end
+
+  describe "パスワード変更画面" do
+    before do
+      visit edit_user_registration_path
+    end
+    context "パスワード変更に成功する" do
+      before do
+        fill_in "user[current_password]", with: "Password"
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "password"
+        click_on "更 新"
+      end
+      it "成功する" do
+        expect(current_path).to eq "/"
+      end
+    end
+    context "パスワード変更に失敗する" do
+      it "current_passwordが違う場合" do
+        fill_in "user[current_password]", with: "password"
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "password"
+        click_on "更 新"
+        expect(current_path).not_to eq "/"
+        expect(response.status).to eq 200
+      end
+      it "passwordが6文字未満の場合" do
+        fill_in "user[current_password]", with: "Password"
+        fill_in "user[password]", with: "pword"
+        fill_in "user[password_confirmation]", with: "pword"
+        click_on "更 新"
+        expect(current_path).not_to eq "/"
+        expect(response.status).to eq 200
+      end
+      it "passwordが一致しない場合" do
+        fill_in "user[current_password]", with: "password"
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "possward"
+        click_on "更 新"
+        expect(current_path).not_to eq "/"
+        expect(response.status).to eq 200
+      end
+    end
+  end
+
+  describe "退会処理" do
+    before do
+      visit edit_user_registration_path
+    end
+    context "退会処理" do
+      before do
+        click_on "退会する"
+      end
+      it "成功する" do
+        expect{
+          expect(page.accept_confirm).to eq "本当に退会してよろしいですか？"
+          expect(page).to have_content "Your account has been successfully cancelled."
+        }.to change{ User.count }.by(-1)
+      end
+      it "ページ遷移の確認" do
+        expect{
+          expect(page.accept_confirm).to eq "本当に退会してよろしいですか？"
+          expect(page).to have_content "Your account has been successfully cancelled."
+          expect(current_path).to eq "/"
+        }
+      end
+      it "キャンセルする" do
+        expect{
+          expect(page.dismiss_confirm).to eq "本当に退会してよろしいですか？"
+          expect(current_path).to eq edit_user_registration_path
+        }.to change{ User.count }.by(0)
+      end
+    end
+    context "戻るボタン" do
+      before do
+        click_on "戻る"
+      end
+      it "ページ遷移の確認" do
         expect(current_path).to eq users_mypage_path
       end
     end

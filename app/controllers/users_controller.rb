@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     photos = Photo.where(user_id: current_user.id) # そのユーザの投稿を全て検索
     @favorite_sum = 0
     photos.each do |photo|
-      favorite_count = photo.favorites.count # その投稿一つ一つにお気に入りがどれだけついているか出す
+      favorite_count = photo.favorites_quantity # その投稿一つ一つにお気に入りがどれだけついているか出す
       @favorite_sum += favorite_count # 投稿一つ一つのお気に入りを合計する
     end
     # お気に入りされた数の算出ここまで
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Update successful"
       redirect_to users_mypage_path
     else
-      render action: "edit"
+      render :edit
     end
   end
 

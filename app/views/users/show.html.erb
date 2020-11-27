@@ -1,5 +1,5 @@
 <div class="col-xs-2">
-  <%= attachment_image_tag @user, :profile_image, size: '200x200' %>
+  <%= attachment_image_tag @user, :profile_image, size: '200x200', fallback: "no_image_messeage.png" %>
   <table class="table">
     <tr>
       <td><%= @user.name %></td>
@@ -9,7 +9,7 @@
     </tr>
   </table>
 </div>
-<div class="col-xs-1"></div>
+<div class="col-xs-1"></div><!--余白生成用タグ-->
 <div class="col-xs-7">
   <%= render 'layouts/post_list', photos: @photos %><!--投稿一覧の部分テンプレート-->
 </div>
