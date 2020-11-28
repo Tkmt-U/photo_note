@@ -14,7 +14,7 @@
     <!-- エラーメッセージ表示ここまで-->
 
     <h2>投稿編集</h2>
-    <%= attachment_image_tag @photo, :image, :fill, 640, 455 %>
+    <%= attachment_image_tag @photo, :image, size: '640x455' %>
     <%= f.attachment_field :image %>
     <table class="table">
       <tr>
