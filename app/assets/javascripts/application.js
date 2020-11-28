@@ -27,8 +27,15 @@ $(function() {
 });
 
 $(function() {
-  var file_field = document.querySelector()
-  $('.image-field').change(function(){
-    var file = $()
-  })  
+  var image = document.getElementById("select-image")
+  console.log(image);
+  var result = document.getElementById("preview")
+  image.onchange = function () {
+    var fileReader = new FileReader() ;
+    fileReader.onload = function () {
+      result.src = this.result ;
+    }
+    var file = image.files[0] ;
+    fileReader.readAsDataURL( file ) ;
+  }
 })

@@ -20,7 +20,7 @@ SNSを使うことに抵抗がない、写真を撮影することが好きな�
 
 ## 設計書
 - WBS：https://docs.google.com/spreadsheets/d/15u61WtwAVPSNfyn9aAYTqzWlfwVPdKBE63w3eJNfh1A/edit?usp=sharing
-- 機能一覧：https://docs.google.com/spreadsheets/d/1jhAw7VadbDeNygi8e3FNlq8TyNf19R6Btrk4pDeA0_Y/edit?usp=sharing
+- アプリケーション機能一覧：https://docs.google.com/spreadsheets/d/1jhAw7VadbDeNygi8e3FNlq8TyNf19R6Btrk4pDeA0_Y/edit?usp=sharing
 - UI Flow：https://drive.google.com/file/d/1SWmrjn40Zf0BQynxn71v8Y-G57r3Av-M/view?usp=sharing
 - ワイヤーフレーム：https://drive.google.com/file/d/16d8tpkdumNJPXpKJDn4K-y3Hl3601z40/view?usp=sharing
 - ER図：https://drive.google.com/file/d/1DyIGQimvzl_ZhExbMJkFjiM39xjmMWzH/view?usp=sharing

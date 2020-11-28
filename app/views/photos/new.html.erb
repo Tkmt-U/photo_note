@@ -14,7 +14,8 @@
     <% end %>
     <!-- エラーメッセージ表示ここまで-->
 
-    <%= f.attachment_field :image, class: "image-field" %>
+    <%= f.attachment_field :image, id: "select-image" %>
+    <img id="preview">
     <table class="table">
       <tr>
         <td>タイトル</td>
