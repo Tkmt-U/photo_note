@@ -5,7 +5,7 @@
   <table class="table">
     <tr>
       <td>
-        <%= link_to user_path(photo.user_id) do %>
+        <%= link_to user_path(photo.user_id), data: {"turbolinks" => false} do %>
           <%= photo.user.name %>
         <% end %>
       </td>

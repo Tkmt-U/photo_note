@@ -25,7 +25,7 @@
     <tr>
       <td>投稿数</td>
       <td>
-        <%= link_to user_path(@user.id) do %>
+        <%= link_to user_path(@user.id), data: {"turbolinks" => false} do %>
           <%= @user.photos.count %>件
         <% end %>
       </td>
