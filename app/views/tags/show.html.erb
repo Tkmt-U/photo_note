@@ -1,0 +1,12 @@
+<div class="col-xs-7 col-xs-offset-2">
+  <h2>
+    タグ "<%= @tag.name %>" の投稿一覧
+  </h2>
+  <%= render 'layouts/post_list', photos: @photos %><!--投稿一覧の部分テンプレート-->
+</div>
+
+<div class="to-top">
+  <a href="#">
+    <span class="glyphicon glyphicon-chevron-up" style="font-size: 40px" aria-hidden="true"></span>
+  </a>
+</div>

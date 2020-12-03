@@ -32,7 +32,14 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
     @photo.favorites_quantity = 0 # favorites_quantityの初期値
+    tags = params[:photo][:tag_name].split(',', 0)
+    tag_list = []
     if @photo.save
+      tag_list = Vision.get_image_date(@photo.image)
+      tags.each do |tag|
+        tag_list << tag
+      end
+      @photo.save_tags(tag_list)
       flash[:notice] = "Create successful"
       redirect_to photo_path(@photo.id)
     else
@@ -46,12 +53,15 @@ class PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+
     redirect_to "/" unless @photo.user == current_user
   end
 
   def update
     @photo = Photo.find(params[:id])
+    tag_list = params[:photo][:tag_name].split('#', 0)
     if @photo.update(photo_params)
+      @photo.save_tags(tag_list)
       flash[:notice] = "Update successful"
       redirect_to photo_path(@photo.id)
     else

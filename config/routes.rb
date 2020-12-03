@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :photos, except: [:index] do
     resource :favorites, only: [:create, :destroy]
   end
+
+  resources :tags, only: [:show]
 end

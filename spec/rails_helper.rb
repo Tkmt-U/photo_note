@@ -30,7 +30,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-require 'capybara/rspec'
+# require 'capybara/rspec'
 RSpec.configure do |config|
   # Capybara.register_driver :headless_chrome do |app|
   #   chrome_options = Selenium::WebDriver::Chrome::Options.new

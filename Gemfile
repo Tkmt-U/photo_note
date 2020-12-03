@@ -61,7 +61,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  # gem 'webdrivers', '~> 3.0'
+  # gem 'webdrivers'
   gem 'database_cleaner'
   # gem 'poltergeist', '~> 1.5.1'
 end
@@ -74,7 +74,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-gem 'exifr'
 
 gem 'dotenv-rails'
 group :production do

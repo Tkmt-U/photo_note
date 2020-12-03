@@ -45,6 +45,16 @@
       <td>コメント</td>
       <td><%= @photo.comment %></td>
     </tr>
+    <tr>
+      <td>タグ</td>
+      <td>
+        <% @photo.tags.each do |tag| %>
+          <%= link_to tag_path(tag), data: {"turbolinks" => false} do %>
+            <%= tag.name %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
   </table>
 
   <%= render 'favorites/favorite', photo: @photo %><!--お気に入り機能の部分テンプレート-->

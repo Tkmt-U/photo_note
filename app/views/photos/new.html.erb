@@ -1,6 +1,6 @@
 <div class="col-xs-1"></div><!--左の余白生成用タグ-->
 <div class="col-xs-7 col-xs-offset-2">
-  <h1>新規投稿</h1>
+  <h2>新規投稿</h2>
   <%= form_with model:@photo, local: true do |f| %>
 
     <!-- 以下エラーメッセージ表示-->
@@ -14,6 +14,7 @@
     <% end %>
     <!-- エラーメッセージ表示ここまで-->
 
+    <%= attachment_image_tag @photo, :image, size: '640x455' %>
     <%= f.attachment_field :image, id: "select-image" %>
     <img id="preview">
     <table class="table">
@@ -48,6 +49,14 @@
       <tr>
         <td>コメント</td>
         <td><%= f.text_area :comment %></td>
+      </tr>
+      <tr>
+        <td>
+          タグ<br>"#"で区切り、複数投稿できます。<br>例：#スポーツ#music
+        </td>
+        <td>
+          <%= f.text_area :tag_name %>
+        </td>
       </tr>
     </table>
     <%= f.submit "保存する" %>
