@@ -59,8 +59,13 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    tag_list = params[:photo][:tag_name].split('#', 0)
+    tags = params[:photo][:tag_name].split(',', 0)
+    tag_list = []
     if @photo.update(photo_params)
+      tag_list = Vision.get_image_date(@photo.image)
+      tags.each do |tag|
+        tag_list << tag
+      end
       @photo.save_tags(tag_list)
       flash[:notice] = "Update successful"
       redirect_to photo_path(@photo.id)

@@ -6,8 +6,10 @@ module Vision
   class << self
     def get_image_date(image_file)
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
+      p api_url
 
       base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{image_file.id}").read)
+      # p base64_image
 
       params = {
         requests: [{
@@ -26,6 +28,8 @@ module Vision
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
+      p "@@@@@@@@@"
+      p response
 
       JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
     end
